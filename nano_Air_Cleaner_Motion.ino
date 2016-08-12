@@ -54,13 +54,13 @@ void loop() {
     t.update();
     int supply = map(analogRead(SUPPLY_VOLTAGE), 0, 1023, 0, 160);
 #ifdef DEBUG
-    Serial.print("\t voltage: ");
+    Serial.print("voltage: ");
     Serial.println(supply);
 #endif
     if (supply < SUPPLY_CUTOFF) {   // my voltage divider is 16V=5V, this smoothes the value and makes it human readable
 #ifdef DEBUG
         Serial.print("low voltage #");
-        Serial.print(battery);
+        Serial.println(battery);
 #endif
         if (battery++ > 32) {   // below battery voltage 32 times? Shut it down! (requires HW reset or power cycle)
             analogWrite(FAN_PWM, 0);
