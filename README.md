@@ -21,6 +21,8 @@ This can be assembled in a small project box or 3D printed case and attached to 
 The software is simple and uses a timing paradigm for control (i.e. no interrupts). The controller goes to sleep in the main loop if the fan is at full speed or stopped.
 
 ### Power usage
+The microcontroller used for the prototype uses 8-24mA in operation. A full power-down gets it to ~7.5mA. To completely stop the fan in full power-down you need to be using the MOSFET.
+A soft-power-down mode is provided for units which will be primarily mains powered, but could be on battery occasionally (this is how I'm using mine). It uses about 33mA (total including 2 connected fans) holding the PWM in an infinite loop at a speed that stops the fan.
 
 ### Notes
  * If the microcontroller has a power LED that will stay on even when it's fully halted. It's worth a couple mA. If that's an issue for your battery setup you could probably cut a trace to disable it.
